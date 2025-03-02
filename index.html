@@ -6,46 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Minimalistic Stopwatch Widget</title>
     <style>
-        /* Grayish Palette and Minimalistic Design */
+        /* Base styling using the specified grayish palette */
         body {
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #191919;
             font-family: Arial, sans-serif;
+            color: #D4D4D4;
         }
 
         .stopwatch {
-            background-color: #ffffff;
+            background-color: #242424;
             padding: 25px 35px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
         .display {
             font-size: 2.5rem;
-            color: #333333;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
         button {
-            padding: 10px 20px;
-            margin: 0 5px;
+            width: 100px;
+            height: 40px;
             border: none;
             border-radius: 5px;
-            background-color: #555555;
-            color: #ffffff;
+            background-color: #333333;
+            color: #D4D4D4;
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #444444;
+            background-color: #4d4d4d;
         }
     </style>
 </head>
@@ -53,9 +59,11 @@
 <body>
     <div class="stopwatch">
         <div class="display" id="display">00:00:00</div>
-        <button id="startBtn">Start</button>
-        <button id="pauseBtn">Pause</button>
-        <button id="resetBtn">Reset</button>
+        <div class="button-container">
+            <button id="startBtn">Start</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="resetBtn">Reset</button>
+        </div>
     </div>
 
     <script>
@@ -66,7 +74,7 @@
         const pauseBtn = document.getElementById('pauseBtn');
         const resetBtn = document.getElementById('resetBtn');
 
-        // Format the time into HH:MM:SS
+        // Convert elapsed time in milliseconds to a formatted string (HH:MM:SS)
         function timeToString(time) {
             const hours = Math.floor(time / 3600000);
             const minutes = Math.floor((time % 3600000) / 60000);
